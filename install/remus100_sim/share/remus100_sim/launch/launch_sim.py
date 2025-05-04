@@ -1,1 +1,0 @@
-/home/thaslim/ros2_ws/src/remus100_sim/launch/launch_sim.py
