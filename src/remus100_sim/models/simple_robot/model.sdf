@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="simple_robot">
+    <static>false</static>
+
+    <!-- Submarine Body -->
+    <link name="submarine_body">
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>1.0</radius>
+            <length>3.0</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 1.0 1.0</ambient>
+          <diffuse>0.0 0.0 1.0 1.0</diffuse>
+          <specular>0.5 0.5 0.5 1.0</specular>
+        </material>
+      </visual>
+
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>1.0</radius>
+            <length>3.0</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <inertial>
+        <mass>20.0</mass>
+        <inertia>
+          <ixx>1.0</ixx>
+          <iyy>1.0</iyy>
+          <izz>1.0</izz>
+        </inertia>
+      </inertial>
+
+      <!-- Front Camera -->
+      <sensor name="front_camera" type="camera">
+        <pose>1 0 0.5 0 0 0</pose>
+        <update_rate>30</update_rate>
+        <always_on>true</always_on>
+        <camera>
+          <horizontal_fov>1.57</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>50</far>
+          </clip>
+        </camera>
+        <plugin name="front_camera_plugin" filename="libgazebo_ros_camera.so">
+          <ros>
+            <namespace>/simple_robot</namespace>
+            <remapping>image_raw:=front_camera/image_raw</remapping>
+          </ros>
+        </plugin>
+      </sensor>
+
+      <!-- Downward Camera -->
+      <sensor name="down_camera" type="camera">
+        <pose>0 0 -0.5 0 1.57 0</pose>
+        <update_rate>30</update_rate>
+        <always_on>true</always_on>
+        <camera>
+          <horizontal_fov>1.57</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>50</far>
+          </clip>
+        </camera>
+        <plugin name="down_camera_plugin" filename="libgazebo_ros_camera.so">
+          <ros>
+            <namespace>/simple_robot</namespace>
+            <remapping>image_raw:=down_camera/image_raw</remapping>
+          </ros>
+        </plugin>
+      </sensor>
+
+      <!-- Sonar Sensor -->
+      <sensor name="sonar_sensor" type="ray">
+        <pose>0 0 -0.3 0 0 0</pose>
+        <update_rate>10</update_rate>
+        <always_on>true</always_on>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>180</samples>
+              <resolution>1</resolution>
+              <min_angle>-1.57</min_angle>
+              <max_angle>1.57</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.2</min>
+            <max>50.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="sonar_plugin" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>/simple_robot</namespace>
+            <remapping>scan:=sonar/scan</remapping>
+          </ros>
+        </plugin>
+      </sensor>
+
+      <!-- IMU Sensor -->
+      <sensor name="imu_sensor" type="imu">
+        <pose>0 0 0.5 0 0 0</pose>
+        <update_rate>50</update_rate>
+        <always_on>true</always_on>
+        <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+          <ros>
+            <namespace>/simple_robot</namespace>
+            <remapping>imu/data:=imu/data</remapping>
+          </ros>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- Thruster Plugin -->
+    <plugin name="thruster_plugin" filename="libgazebo_ros_thruster.so">
+      <ros>
+        <namespace>/simple_robot</namespace>
+        <remapping>thruster_cmd:=cmd_vel</remapping>
+      </ros>
+      <link_name>submarine_body</link_name>
+      <thruster>
+        <position>0 0 -0.5</position>
+        <direction>1 0 0</direction>
+        <force>10</force>
+      </thruster>
+      <thruster>
+        <position>0 0 0</position>
+        <direction>0 0 1</direction>
+        <force>30</force>
+      </thruster>
+      <thruster>
+        <position>0.5 0 0</position>
+        <direction>0 1 0</direction>
+        <force>20</force>
+      </thruster>
+    </plugin>
+
+    <!-- Velocity Controller -->
+    <plugin name="velocity_controller" filename="libgazebo_ros_velocity_controller.so">
+      <ros>
+        <namespace>/simple_robot</namespace>
+        <remapping>
+          <remap from="cmd_vel" to="cmd_vel"/>
+        </remapping>
+      </ros>
+      <robotNamespace>simple_robot</robotNamespace>
+      <commandTopic>cmd_vel</commandTopic>
+      <linkName>submarine_body</linkName>
+    </plugin>
+
+  </model>
+</sdf>
+
