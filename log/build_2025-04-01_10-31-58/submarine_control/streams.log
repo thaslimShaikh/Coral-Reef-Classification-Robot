@@ -1,0 +1,23 @@
+[2.116s] Invoking command in '/home/thaslim/ros2_ws/build/submarine_control': PYTHONPATH=/home/thaslim/ros2_ws/build/submarine_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thaslim/ros2_ws/install/submarine_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thaslim/ros2_ws/build/submarine_control/build --no-deps symlink_data
+[2.863s] running develop
+[3.399s] running egg_info
+[3.399s] creating submarine_control.egg-info
+[3.400s] writing submarine_control.egg-info/PKG-INFO
+[3.400s] writing dependency_links to submarine_control.egg-info/dependency_links.txt
+[3.401s] writing entry points to submarine_control.egg-info/entry_points.txt
+[3.401s] writing requirements to submarine_control.egg-info/requires.txt
+[3.401s] writing top-level names to submarine_control.egg-info/top_level.txt
+[3.402s] writing manifest file 'submarine_control.egg-info/SOURCES.txt'
+[3.408s] reading manifest file 'submarine_control.egg-info/SOURCES.txt'
+[3.411s] writing manifest file 'submarine_control.egg-info/SOURCES.txt'
+[3.414s] running build_ext
+[3.415s] Creating /home/thaslim/ros2_ws/install/submarine_control/lib/python3.10/site-packages/submarine-control.egg-link (link to .)
+[3.417s] 
+[3.418s] Installed /home/thaslim/ros2_ws/build/submarine_control
+[3.418s] running symlink_data
+[3.418s] creating /home/thaslim/ros2_ws/install/submarine_control/share/ament_index
+[3.418s] creating /home/thaslim/ros2_ws/install/submarine_control/share/ament_index/resource_index
+[3.419s] creating /home/thaslim/ros2_ws/install/submarine_control/share/ament_index/resource_index/packages
+[3.419s] symbolically linking /home/thaslim/ros2_ws/build/submarine_control/resource/submarine_control -> /home/thaslim/ros2_ws/install/submarine_control/share/ament_index/resource_index/packages
+[3.419s] symbolically linking /home/thaslim/ros2_ws/build/submarine_control/package.xml -> /home/thaslim/ros2_ws/install/submarine_control/share/submarine_control
+[3.495s] Invoked command in '/home/thaslim/ros2_ws/build/submarine_control' returned '0': PYTHONPATH=/home/thaslim/ros2_ws/build/submarine_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thaslim/ros2_ws/install/submarine_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thaslim/ros2_ws/build/submarine_control/build --no-deps symlink_data
