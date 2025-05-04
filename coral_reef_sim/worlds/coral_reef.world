@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="coral_reef_world">
+    <!-- Load the ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Load the default Sun -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Load the coral reef model -->
+    <model name="coral_reef">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://coral_reef/meshes/coral_reef_small.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Load the Remus100 robot model -->
+    <model name="remus100">
+      <pose>0 0 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://remus100/meshes/remus100.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://remus100/meshes/remus100.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+  </world>
+</sdf>
