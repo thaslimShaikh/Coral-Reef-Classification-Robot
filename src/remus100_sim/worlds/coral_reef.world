@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="coral_reef_world">
+
+    <!-- Load the ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Load the default Sun -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Load the coral reef model -->
+    <model name="coral_reef">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://coral_reef_small/meshes/coral_reef_small.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Load the Remus100 submarine robot -->
+    <model name="remus100">
+      <pose>0 0 0 0 0 0</pose> <!-- You can adjust this pose later -->
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://remus100/meshes/remus100.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
+
