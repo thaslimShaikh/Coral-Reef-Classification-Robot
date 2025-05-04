@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="coral_reef_small">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://coral_reef_small/meshes/coral_reef_small.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
